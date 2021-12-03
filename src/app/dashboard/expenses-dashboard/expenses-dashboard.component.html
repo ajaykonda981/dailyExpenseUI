@@ -1,0 +1,53 @@
+<div class="container">
+<div class="row">
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+            <div class="card-header">Total Expenses Till Date</div>
+            <div class="card-body">
+                <h5 class="card-title">Total amount spend till date</h5>
+                <p class="card-text">3,00,000</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+    <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+        <div class="card-header">Total Expenses this month</div>
+        <div class="card-body">
+            <h5 class="card-title">Expenses this month</h5>
+            <p class="card-text">50000</p>
+        </div>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+        <div class="card-header">Total Expenses today</div>
+        <div class="card-body">
+            <h5 class="card-title">Expenses today</h5>
+            <p class="card-text">5000</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <h1>1. This month</h1>
+        <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient"
+            [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel">
+        </ngx-charts-bar-vertical>
+    </div>
+    <div class="col-md-6">
+        <h1>2.)Comparison b/w months</h1>
+        <ngx-charts-bar-vertical-2d [view]="view" [scheme]="colorScheme" [results]="multi" [gradient]="gradient"
+            [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel">
+        </ngx-charts-bar-vertical-2d>
+    </div>
+</div>
+<hr>
+<h1>3.)Pie-chart</h1>
+        <ngx-charts-pie-chart [scheme]="colorScheme" [results]="single" [legend]="showLegend" [labels]="showLabels"
+            [doughnut]="doughnut" [gradient]="gradient">
+        </ngx-charts-pie-chart>
+</div>

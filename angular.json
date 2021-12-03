@@ -28,9 +28,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.scss",
+              "../node_modules/bootstrap/dist/css/bootstrap.css"
             ],
-            "scripts": []
+            "scripts": [
+              "../node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -92,6 +96,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -123,6 +128,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "dailyexpensestracker"
+    }
+  },
+  "defaultProject": "dailyexpensestracker",
+  "cli": {
+    "analytics": "83ef55f4-a703-49c9-86e1-468e7dff5b0e"
+  }
 }

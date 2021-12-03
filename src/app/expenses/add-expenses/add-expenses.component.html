@@ -1,0 +1,94 @@
+<form [formGroup] = "form">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group required">
+                <label class="control-label" for="ddlCategoryName">Category Name</label>
+                <select name="ddlCategoryName" class="form-control" id="ddlCategoryName"
+                    aria-describedby="categoryName" formControlName="Category" required>
+                    <option  [value]="">--Select--</option>
+                    <option *ngFor="let food of foods" [value]="food.value">{{food.viewValue}}</option>
+                </select>
+                <span class="inputRequired mt-1" *ngIf="(form.controls['Category'].dirty || form.controls['Category'].touched ) && form.controls['Category'].errors?.required">
+                    Please select category
+                </span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group required">
+                <label class="control-label" for="expensesAmount">Amount</label>
+                <input type="number" class="form-control" id="expensesAmount" aria-describedby="expensesAmount"
+                    placeholder="Enter amount" formControlName="Amount">
+                    <span class="inputRequired mt-1" *ngIf="(form.controls['Amount'].dirty || form.controls['Amount'].touched ) && form.controls['Amount'].errors?.required">
+                        Please enter Amount
+                    </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="form-group required">
+                <label class="control-label" for="expensesDate">Expense Date</label>
+                <input onmouseover="" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" name="Date of Birth" placeholder="Expenses date" formControlName="ExpensesDate">
+
+                <span class="inputRequired mt-1" *ngIf="(form.controls['ExpensesDate'].dirty || form.controls['ExpensesDate'].touched ) && form.controls['ExpensesDate'].errors?.required">
+                    Please enter Expense Date
+                </span>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div class="form-group required">
+                <label class="control-label" for="expensesAmount">Payment Mode</label>
+                <select name="ddlPaymentMode" class="form-control" id="ddlPaymentMode"
+                    aria-describedby="PaymentMode" formControlName="PaymentMode">
+                    <option  [value]="">--Select--</option>
+                    <option *ngFor="let mode of paymentModes" [value]="mode.id">{{mode.name}}</option>
+                </select>
+
+                
+                <span class="inputRequired mt-1" *ngIf="(form.controls['PaymentMode'].dirty || form.controls['PaymentMode'].touched ) && form.controls['PaymentMode'].errors?.required">
+                    Please select Payment Mode
+                </span>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group required">
+                <label class="control-label" for="expensesAmount">Payment Date</label>
+                <input formControlName="PaymentDate" onmouseover="" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" name="Date of Birth" placeholder="Payment Date">
+                <span class="inputRequired mt-1" *ngIf="(form.controls['PaymentDate'].dirty || form.controls['PaymentDate'].touched ) && form.controls['PaymentDate'].errors?.required">
+                    Please select Payment Date
+                </span>
+
+            </div>
+        </div>
+    </div>
+    <div class="form-group required mt-4" >
+        <label class="control-label" for="comments">Comments</label>
+        <textarea class="form-control" id="comments" rows="3" formControlName="Comments"></textarea>
+        <span class="inputRequired mt-1" *ngIf="(form.controls['Comments'].dirty || form.controls['Comments'].touched ) && form.controls['Comments'].errors?.required">
+            Please enter comments
+        </span>
+    </div>
+
+    <div class="form-group mt-4">
+        <label >Upload Files: </label>
+        <button type="button" mat-raised-button color="warn" (click)="upload()">Upload</button>
+        <ngx-dropzone (change)="onSelect($event)">
+            <ngx-dropzone-label>Please Upload Documents here!</ngx-dropzone-label>
+            <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }} </ngx-dropzone-label>
+            </ngx-dropzone-preview>
+        </ngx-dropzone>
+    </div>
+
+    <div class="row mt-2">
+        <div class="example-button-row">
+            <button type="submit" mat-raised-button color="primary" [disabled] = "this.form.invalid" (click) = "saveExpenses()">Save</button>
+            <button type="button" mat-raised-button color="accent" (click)="close()">Close</button>
+
+        </div>
+    </div>
+</form>

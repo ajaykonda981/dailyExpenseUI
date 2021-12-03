@@ -1,0 +1,101 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Expenses Details :
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <strong>
+                        Category :
+                    </strong>
+                </div>
+                <div class="col-md-6">
+                    <span>
+                        Food
+                    </span>
+                </div>
+                <div class="col-md-6">
+                    <strong>
+                        Amount :
+                    </strong>
+                </div>
+                <div class="col-md-6">
+                    <span>
+                        150
+                    </span>
+                </div>
+                <div class="col-md-6">
+                    <strong>
+                        Expense Date :
+                    </strong>
+                </div>
+                <div class="col-md-6">
+                    <span>
+                        3-12-2021
+                    </span>
+                </div>
+                <div class="col-md-6">
+                    <strong>
+                        Payment Mode :
+                    </strong>
+                </div>
+                <div class="col-md-6">
+                    <span>
+                        Phone Pay
+                    </span>
+                </div>
+
+                <div class="col-md-6">
+                    <strong>
+                        Payment Date :
+                    </strong>
+                </div>
+                <div class="col-md-6">
+                    <span>
+                        3-12-2021
+                    </span>
+                </div>
+
+                <div class="col-md-6">
+                    <strong>
+                        Comments :
+                    </strong>
+                </div>
+                <div class="col-md-6">
+                    <span>
+                        For morning tiffins and tea
+                    </span>
+                </div>
+
+
+                <div class="col-md-6">
+                    <strong>
+                        Transaction Picture :
+                    </strong>
+                </div>
+                <div class="col-md-6">
+                    <span style="color: slateblue;"> Click to download files</span>
+                    
+                </div>
+                
+
+            </div>
+            <!-- <div class="col-md-6"> -->
+                <div class="col-md-6">
+                    <p class="downloadFiles" *ngFor = "let file of files">
+                        <mat-icon>cloud_download
+                        
+                        </mat-icon>
+                        {{file.fileName}}
+                    </p>
+                    
+                </div>
+                
+            <!-- </div> -->
+        </div>
+        <button mat-raised-button color="primary" (click)="close()">
+            Close
+          </button>
+    </div>
+</div>
