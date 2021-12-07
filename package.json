@@ -26,6 +26,7 @@
     "highcharts": "^9.3.2",
     "highcharts-angular": "^3.0.0",
     "ngx-dropzone": "^3.0.0",
+    "ngx-toastr": "^11.3.2",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

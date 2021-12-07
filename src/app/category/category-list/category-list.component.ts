@@ -1,25 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { CategoryService } from 'src/app/_services/category.service';
 import { AddCategoryComponent } from '../add-category/add-category.component';
-
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Cement'},
-  {position: 2, name: 'Iron'},
-  {position: 3, name: 'Sand'},
-  {position: 4, name: 'Daily Wages'},
-  {position: 5, name: 'Plumbing'},
-  {position: 6, name: 'Electricity'},
-  {position: 7, name: 'Miscelleneaous'},
-  {position: 8, name: 'Food'},
-  {position: 9, name: 'Petrol'},
-  {position: 10, name: 'Others'},
-];
 
 @Component({
   selector: 'app-category-list',
@@ -29,24 +13,48 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 
 export class CategoryListComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name'];
-  dataSource = ELEMENT_DATA;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  displayedColumns: string[] = ['id', 'categoryName'];
+  //dataSource: any = [];
+  data: any = [];
+  dataSource = new MatTableDataSource<any>();
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
   constructor(
-    public dialog: MatDialog
-  ) { }
+    public dialog: MatDialog,
+    private categoryService: CategoryService,
+  ) { 
+  }
 
   ngOnInit(): void {
-
+    this.search();
     
   }
 
   openDialog() {
-    this.dialog.open(AddCategoryComponent, {
+   let dialogRef =  this.dialog.open(AddCategoryComponent, {
       data: {
         animal: 'panda',
       },
-      width: '450px'
+      width: '450px',
+      
     });
+    dialogRef.afterClosed().subscribe(res => {
+      this.search();
+    
+    })
   }
+
+  search() {
+    this.categoryService.search().subscribe(categories => {
+      this.data = categories;
+      this.dataSource = new MatTableDataSource<any>(this.data);
+      this.dataSource.paginator = this.paginator;
+    })
+  }
+
+
 
 }

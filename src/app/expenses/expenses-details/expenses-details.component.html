@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-md-6">
                     <span>
-                        Food
+                        {{data?.categoryName}}
                     </span>
                 </div>
                 <div class="col-md-6">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-md-6">
                     <span>
-                        150
+                        {{data?.amount}}
                     </span>
                 </div>
                 <div class="col-md-6">
@@ -32,7 +32,7 @@
                 </div>
                 <div class="col-md-6">
                     <span>
-                        3-12-2021
+                        {{data?.expensesDate | date: 'dd-MM-yyyy' }}
                     </span>
                 </div>
                 <div class="col-md-6">
@@ -42,7 +42,7 @@
                 </div>
                 <div class="col-md-6">
                     <span>
-                        Phone Pay
+                        {{data?.paymentMode1}}
                     </span>
                 </div>
 
@@ -53,7 +53,7 @@
                 </div>
                 <div class="col-md-6">
                     <span>
-                        3-12-2021
+                        {{data?.paymentDate | date: 'dd-MM-yyyy' }}
                     </span>
                 </div>
 
@@ -64,7 +64,7 @@
                 </div>
                 <div class="col-md-6">
                     <span>
-                        For morning tiffins and tea
+                        {{data?.comments}}
                     </span>
                 </div>
 
@@ -84,10 +84,11 @@
             <!-- <div class="col-md-6"> -->
                 <div class="col-md-6">
                     <p class="downloadFiles" *ngFor = "let file of files">
-                        <mat-icon>cloud_download
                         
-                        </mat-icon>
-                        {{file.fileName}}
+                        <button mat-icon-button color="accent" (click) = "downloadFile(file)">
+                            <mat-icon>cloud_download</mat-icon>
+                          </button>
+                        {{file.actualFileName}}
                     </p>
                     
                 </div>

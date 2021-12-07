@@ -12,6 +12,12 @@ import {MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { CategoryService} from '../_services/category.service';
+import { HttpClientModule } from '@angular/common/http';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 @NgModule({
   declarations: [AddCategoryComponent, CategoryListComponent],
   imports: [
@@ -23,8 +29,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
+    ToastrModule.forRoot()
 
+  ],
+  providers: [
+    CategoryService,
+    ToastrService
+    
   ]
   
 })

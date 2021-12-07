@@ -16,6 +16,12 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileUploaderService} from '../_shared/file-uploader.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DailyExpensesService } from '../_services/daily-expenses.service';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { CategoryService } from '../_services/category.service';
+import { PaymentModesService } from '../_services/payment-modes.service';
 @NgModule({
   declarations: [AddExpensesComponent, ExpensesListComponent, DeleteExpensesComponent, ExpensesDetailsComponent],
   imports: [
@@ -30,8 +36,10 @@ import { HttpClientModule } from '@angular/common/http';
     NgxDropzoneModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatPaginatorModule,
+    ToastrModule.forRoot()
   ],
-  providers: [FileUploaderService]
+  providers: [FileUploaderService, DailyExpensesService, ToastrService, CategoryService, PaymentModesService]
 })
 export class ExpensesModule { }

@@ -4,11 +4,11 @@
             <div class="form-group required">
                 <label class="control-label" for="ddlCategoryName">Category Name</label>
                 <select name="ddlCategoryName" class="form-control" id="ddlCategoryName"
-                    aria-describedby="categoryName" formControlName="Category" required>
+                    aria-describedby="categoryName" formControlName="category" required>
                     <option  [value]="">--Select--</option>
-                    <option *ngFor="let food of foods" [value]="food.value">{{food.viewValue}}</option>
+                    <option *ngFor="let category of categories" [value]="category.id">{{category.categoryName}}</option>
                 </select>
-                <span class="inputRequired mt-1" *ngIf="(form.controls['Category'].dirty || form.controls['Category'].touched ) && form.controls['Category'].errors?.required">
+                <span class="inputRequired mt-1" *ngIf="(form.controls['category'].dirty || form.controls['category'].touched ) && form.controls['category'].errors?.required">
                     Please select category
                 </span>
             </div>
@@ -17,8 +17,8 @@
             <div class="form-group required">
                 <label class="control-label" for="expensesAmount">Amount</label>
                 <input type="number" class="form-control" id="expensesAmount" aria-describedby="expensesAmount"
-                    placeholder="Enter amount" formControlName="Amount">
-                    <span class="inputRequired mt-1" *ngIf="(form.controls['Amount'].dirty || form.controls['Amount'].touched ) && form.controls['Amount'].errors?.required">
+                    placeholder="Enter amount" formControlName="amount">
+                    <span class="inputRequired mt-1" *ngIf="(form.controls['amount'].dirty || form.controls['amount'].touched ) && form.controls['amount'].errors?.required">
                         Please enter Amount
                     </span>
             </div>
@@ -29,9 +29,9 @@
         <div class="col-md-4">
             <div class="form-group required">
                 <label class="control-label" for="expensesDate">Expense Date</label>
-                <input onmouseover="" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" name="Date of Birth" placeholder="Expenses date" formControlName="ExpensesDate">
+                <input onmouseover="" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" name="Date of Birth" placeholder="Expenses date" formControlName="expensesDate">
 
-                <span class="inputRequired mt-1" *ngIf="(form.controls['ExpensesDate'].dirty || form.controls['ExpensesDate'].touched ) && form.controls['ExpensesDate'].errors?.required">
+                <span class="inputRequired mt-1" *ngIf="(form.controls['expensesDate'].dirty || form.controls['expensesDate'].touched ) && form.controls['expensesDate'].errors?.required">
                     Please enter Expense Date
                 </span>
 
@@ -42,13 +42,13 @@
             <div class="form-group required">
                 <label class="control-label" for="expensesAmount">Payment Mode</label>
                 <select name="ddlPaymentMode" class="form-control" id="ddlPaymentMode"
-                    aria-describedby="PaymentMode" formControlName="PaymentMode">
+                    aria-describedby="PaymentMode" formControlName="paymentMode">
                     <option  [value]="">--Select--</option>
-                    <option *ngFor="let mode of paymentModes" [value]="mode.id">{{mode.name}}</option>
+                    <option *ngFor="let mode of paymentModes" [value]="mode.id">{{mode.paymentMode1}}</option>
                 </select>
 
                 
-                <span class="inputRequired mt-1" *ngIf="(form.controls['PaymentMode'].dirty || form.controls['PaymentMode'].touched ) && form.controls['PaymentMode'].errors?.required">
+                <span class="inputRequired mt-1" *ngIf="(form.controls['paymentMode'].dirty || form.controls['paymentMode'].touched ) && form.controls['paymentMode'].errors?.required">
                     Please select Payment Mode
                 </span>
 
@@ -57,8 +57,8 @@
         <div class="col-md-4">
             <div class="form-group required">
                 <label class="control-label" for="expensesAmount">Payment Date</label>
-                <input formControlName="PaymentDate" onmouseover="" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" name="Date of Birth" placeholder="Payment Date">
-                <span class="inputRequired mt-1" *ngIf="(form.controls['PaymentDate'].dirty || form.controls['PaymentDate'].touched ) && form.controls['PaymentDate'].errors?.required">
+                <input formControlName="paymentDate" onmouseover="" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" name="Date of Birth" placeholder="Payment Date">
+                <span class="inputRequired mt-1" *ngIf="(form.controls['paymentDate'].dirty || form.controls['paymentDate'].touched ) && form.controls['paymentDate'].errors?.required">
                     Please select Payment Date
                 </span>
 
@@ -67,8 +67,8 @@
     </div>
     <div class="form-group required mt-4" >
         <label class="control-label" for="comments">Comments</label>
-        <textarea class="form-control" id="comments" rows="3" formControlName="Comments"></textarea>
-        <span class="inputRequired mt-1" *ngIf="(form.controls['Comments'].dirty || form.controls['Comments'].touched ) && form.controls['Comments'].errors?.required">
+        <textarea class="form-control" id="comments" rows="3" formControlName="comments"></textarea>
+        <span class="inputRequired mt-1" *ngIf="(form.controls['comments'].dirty || form.controls['comments'].touched ) && form.controls['comments'].errors?.required">
             Please enter comments
         </span>
     </div>

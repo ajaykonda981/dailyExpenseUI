@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { DailyExpensesService } from 'src/app/_services/daily-expenses.service';
 @Component({
   selector: 'app-expenses-dashboard',
   templateUrl: './expenses-dashboard.component.html',
   styleUrls: ['./expenses-dashboard.component.scss']
 })
 export class ExpensesDashboardComponent implements OnInit {
-
-  constructor() { }
+  expenses: any = {};
+  constructor(
+    private dailyExpenseService: DailyExpensesService
+  ) { }
 
   ngOnInit(): void {
+    this.getExpenses()
   }
 
   name = 'Angular';
@@ -141,4 +145,12 @@ export class ExpensesDashboardComponent implements OnInit {
       ]
     }
   ];
+
+  getExpenses() {
+    this.dailyExpenseService.getExpenses().subscribe(expenses => {
+      this.expenses = expenses;
+    })
+  }
 }
+
+

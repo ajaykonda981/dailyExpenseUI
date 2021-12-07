@@ -1,7 +1,8 @@
-import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
+import { CategoryService } from 'src/app/_services/category.service';
 
 export interface DialogData {
   animal: 'panda' | 'unicorn' | 'lion';
@@ -14,10 +15,13 @@ export interface DialogData {
 })
 export class AddCategoryComponent implements OnInit {
   public form: FormGroup;
+  isMask = false;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private dialogRef: MatDialogRef<AddCategoryComponent>,
     private fb: FormBuilder,
+    private categoryService: CategoryService,
+    private toastr: ToastrService
     ) {}
 
   ngOnInit(): void {
@@ -25,10 +29,14 @@ export class AddCategoryComponent implements OnInit {
   }
 
   saveCategory() {
+  this.isMask =true
     if (this.form.valid) {
-      console.log('save category is', this.form.value)
+      this.categoryService.post(this.form.value).subscribe(res => {
+       this.isMask =false
+       this.showSuccess()
+       this.dialogRef.close();  
+      })
     }
-    
   }
 
   close() {
@@ -37,9 +45,14 @@ export class AddCategoryComponent implements OnInit {
 
   buildCategoryForm() {
     this.form = this.fb.group({
-      CategoryName: ['', [Validators.required]]
+      categoryName: ['', [Validators.required]]
     });
   }
+
+  showSuccess() {
+    this.toastr.success('Saved successfully')
+  }
+  
   
 
 }

@@ -1,8 +1,8 @@
 <form [formGroup] = "form">
     <div class="form-group required">
         <label class="control-label" for="reasonForDelete">Reason for deleting</label>
-        <textarea class="form-control" id="reasonForDelete" rows="3" formControlName="ReasonForDeleting"></textarea>
-        <span class="inputRequired mt-1" *ngIf="(form.controls['ReasonForDeleting'].dirty || form.controls['ReasonForDeleting'].touched ) && form.controls['ReasonForDeleting'].errors?.required">
+        <textarea class="form-control" id="reasonForDelete" rows="3" formControlName="reasonForDeleting"></textarea>
+        <span class="inputRequired mt-1" *ngIf="(form.controls['reasonForDeleting'].dirty || form.controls['reasonForDeleting'].touched ) && form.controls['reasonForDeleting'].errors?.required">
             Please select reason
         </span>
     </div>

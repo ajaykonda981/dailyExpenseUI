@@ -1,9 +1,10 @@
-<form [formGroup] = "form">
+<mat-spinner *ngIf ="isMask" ></mat-spinner>
+<form [formGroup] = "form" *ngIf = "!isMask">
     <div class="form-group required">
         <label class="control-label" for="txtCategoryName">Category Name</label>
-        <input type="text" autocomplete="off" class="form-control" maxlength="10" formControlName="CategoryName" id="txtCategoryName" aria-describedby="categoryName"
+        <input type="text" autocomplete="off" class="form-control" maxlength="30" formControlName="categoryName" id="txtCategoryName" aria-describedby="categoryName"
             placeholder="Enter category name" required>
-            <span class=" inputRequired mt-1" *ngIf="(form.controls['CategoryName'].dirty || form.controls['CategoryName'].touched ) && form.controls['CategoryName'].errors.required">
+            <span class=" inputRequired mt-1" *ngIf="(form.controls['categoryName'].dirty || form.controls['categoryName'].touched ) && form.controls['categoryName']?.errors?.required">
                 Please enter category name
             </span>
     </div>
@@ -11,7 +12,7 @@
 
     <div class="row mt-2">
         <div class="example-button-row">
-            <button type="submit" mat-raised-button color="primary" [disabled] = "this.form.invalid" (click) ="saveCategory()">Save</button>
+            <button type="submit" mat-raised-button color="primary" [disabled] = "this.form.invalid"  (click) ="saveCategory()">Save</button>
             <button type="button" mat-raised-button color="accent" (click)="close()">Close</button>
 
         </div>
