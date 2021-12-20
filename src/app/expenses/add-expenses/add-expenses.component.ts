@@ -95,7 +95,7 @@ saveExpenses() {
     this.form.value.fileuploader = this.Fileuploader;
     this.dailyExpensesService.post(this.form.value).subscribe(response => {
       console.log(response)
-      this.dialogRef.close()
+      this.dialogRef.close('Saved')
     })    
   }
 }

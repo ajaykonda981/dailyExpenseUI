@@ -69,28 +69,32 @@
                 </div>
 
 
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf = "files.length > 0">
                     <strong>
                         Transaction Picture :
                     </strong>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf = "files.length > 0">
                     <span style="color: slateblue;"> Click to download files</span>
                     
                 </div>
                 
+                <div class="offset-md-4 col-md-3" *ngIf = "files.length == 0">
+                    <strong>
+                        <span style="color: red;"> *No files attached</span>
+                    </strong>
+                </div>
 
             </div>
             <!-- <div class="col-md-6"> -->
                 <div class="col-md-6">
                     <p class="downloadFiles" *ngFor = "let file of files">
-                        
                         <button mat-icon-button color="accent" (click) = "downloadFile(file)">
                             <mat-icon>cloud_download</mat-icon>
-                          </button>
+                        
                         {{file.actualFileName}}
+                    </button>
                     </p>
-                    
                 </div>
                 
             <!-- </div> -->

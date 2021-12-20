@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dailyexpensestracker';
+  version = '1.0.0'
 }

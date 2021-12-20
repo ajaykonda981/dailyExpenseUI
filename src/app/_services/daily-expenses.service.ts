@@ -12,18 +12,29 @@ export class DailyExpensesService {
     private http: HttpClient
   ) { }
 
-  search() {
-    return this.http.get(this.url)
+  search(filters: any = []) {
+    if(filters.length > 0) {
+      let queryFilters: any = filters[0]
+      const paramsT = new HttpParams()
+      .append('category', queryFilters.category)
+      .append('fromExpensesDate', queryFilters.fromExpensesDate)
+      .append('toExpensesDate', queryFilters.toExpensesDate)
+      .append('paymentMode', queryFilters.paymentMode)
+      return this.http.get(this.url, { params: paramsT })
+
+    } else {
+      return this.http.get(this.url)
+
+    }
   }
 
   post(data: any) {
     return this.http.post(this.url,data)
   }
 
-  delete(id:number, reason) {
-    const paramsT = new HttpParams()
-    .append('reason', reason)
-    return this.http.delete(this.url+'/'+id, { params: paramsT })
+  delete(data) {
+    
+    return this.http.post(this.url+'/Delete', data)
   }
 
   getByid(id:number) {

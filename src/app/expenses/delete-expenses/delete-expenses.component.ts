@@ -38,7 +38,11 @@ export class DeleteExpensesComponent implements OnInit {
   }
   
   deleteExpense() {
-    this.dailyExpenseService.delete(this.data, this.form.value.reasonForDeleting).subscribe(res => {
+    let deleteExpensesData = {
+      id :  this.data,
+      reason: this.form.value.reasonForDeleting
+    }
+    this.dailyExpenseService.delete(deleteExpensesData).subscribe(res => {
       console.log(res)
       this.dialogRef.close()
     })
